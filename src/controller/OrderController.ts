@@ -51,7 +51,7 @@ export class OrderController {
        order.orderNo=orderNo
        order.address=address
        let errors = await validate(order)
-       console.log(111111111,order)
+//        console.log(111111111,order)
        if (errors.length > 0) {
            return response.status(400).send(new Err(errCode.E404, errMsg.Missing, null))
        }
