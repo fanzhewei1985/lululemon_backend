@@ -33,7 +33,7 @@ export class PaymentController {
         let payment = new Payment()
        payment.amount=amount || 100
        payment.orderNo=orderNo
-       console.log(1111111111111111111,payStatus)
+//        console.log(1111111111111111111,payStatus)
        let paymentIntent=null
        const Stripe = require('stripe');
        const stripe = Stripe('sk_test_51MWulfFfhF5AxI6FMPFRGKOZyhhpdRbrD8gpeUtMBvNcUMBuMUe7Qk7uKgPXOmwPUlClxkbPRwncCKhYt6WVKu5x00d0zg9iMp');
@@ -47,7 +47,7 @@ export class PaymentController {
             payment.paymentType=payType
             const order=await PaymentController.orderRepo.findOne({orderNo:orderNo})
             payment.order=order
-            console.log(111,payment)
+//             console.log(111,payment)
             const errors =await validate(payment)
             console.log(errors)
             if (errors.length>0)
@@ -55,7 +55,7 @@ export class PaymentController {
                 let err= new Err(errCode.E400,errMsg.Missing,null)
                 return response.status(400).send(err)
             }
-            console.log(222,payment)    
+//             console.log(222,payment)    
           
             const paymentStatusT=await PaymentController.payStatusRepo.findOne({name:'Success'}) 
             payment.paymentStatus=paymentStatusT
